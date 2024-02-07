@@ -10,6 +10,7 @@ instance Semigroup Structure where
   (<>) (Structure c1) (Structure c2) = Structure (c1 <> c2)
 
 instance Monoid Structure where
+  mempty :: Structure
   mempty = empty_
 
 empty_ :: Structure
@@ -49,7 +50,7 @@ ol_ :: [Structure] -> Structure
 ol_ = Structure . list_ "ol"
 
 list_ :: String -> [Structure] -> String
-list_ order = el order . concat . map li_
+list_ order = el order . concatMap li_
 
 getStructureString :: Structure -> String
 getStructureString (Structure str) = str
@@ -66,7 +67,7 @@ escape =
         '\'' -> "&#39;"
         _ -> [c]
   in
-    concat . map escapeChar
+    concatMap escapeChar
     
 render :: Html -> String
 render (Html str) = str
