@@ -8,6 +8,7 @@ module Html
   , ul_
   , ol_
   , h_
+  , code_
   , render
   , escape
   ) 

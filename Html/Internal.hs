@@ -9,7 +9,7 @@ instance Semigroup Structure where
   (<>) :: Structure -> Structure -> Structure
   (<>) (Structure c1) (Structure c2) = Structure (c1 <> c2)
 
-instance Moniod Structure where
+instance Monoid Structure where
   mempty = empty_
 
 empty_ :: Structure
@@ -34,7 +34,7 @@ h2_ :: String -> Structure
 h2_ = Structure . el "h2" . escape
 
 h_ :: Natural -> String -> Structure
-h_ heading = Structure . el $ "h" <> show heading . escape
+h_ heading = Structure . el ("h" <> show heading) . escape
 
 li_ :: Structure -> String
 li_ = el "li" . getStructureString
