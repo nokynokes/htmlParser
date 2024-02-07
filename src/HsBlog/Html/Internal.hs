@@ -1,4 +1,5 @@
-module Html.Internal where
+{-# LANGUAGE InstanceSigs #-}
+module HsBlog.Html.Internal where
 
 import Numeric.Natural
 newtype Html = Html String

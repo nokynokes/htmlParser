@@ -1,14 +1,17 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Use lambda-case" #-}
 {-# HLINT ignore "Use when" #-}
-import qualified Html
-import qualified Markup
-import Convert (convert)
+module HsBlog
+  ( main
+  , process
+  )
+  where
+import qualified HsBlog.Html as Html
+import qualified HsBlog.Markup as Markup
+import HsBlog.Convert (convert)
 import System.Directory (doesFileExist)
 import System.Environment (getArgs)
 
 process :: Html.Title -> String -> String
-process title = Html.render . Convert.convert title . Markup.parse
+process title = Html.render . convert title . Markup.parse
 
 confirm :: IO Bool
 confirm = do
